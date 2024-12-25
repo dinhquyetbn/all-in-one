@@ -8,8 +8,3 @@
 !/php/session/.gitkeep
 /php/vendor
 
-/manual-install/*.conf
-!/manual-install/sample.conf
-/manual-install/docker-compose.yml
-/manual-install/compose.yaml
-/manual-install/.env
