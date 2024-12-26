@@ -125,11 +125,11 @@ services:
       - ${NEXTCLOUD_TRUSTED_CACERTS_DIR}:/usr/local/share/ca-certificates:ro
     environment:
       - NEXTCLOUD_HOST=nextcloud-aio-nextcloud
-      - POSTGRES_HOST=
+      - POSTGRES_HOST=100.100.5.10
       - POSTGRES_PORT=5432
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_DB=nextcloud_database
-      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=giamngheo
+      - POSTGRES_DB=db_giam_ngheo
+      - POSTGRES_USER=oc_admin
       - REDIS_HOST=nextcloud-aio-redis
       - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
       - APACHE_HOST=nextcloud-aio-apache
@@ -200,11 +200,11 @@ services:
       - NEXTCLOUD_HOST=nextcloud-aio-nextcloud
       - REDIS_HOST=nextcloud-aio-redis
       - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
-      - POSTGRES_HOST=
+      - POSTGRES_HOST=100.100.5.10
       - POSTGRES_PORT=5432
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_DB=nextcloud_database
-      - POSTGRES_USER=nextcloud
+      - POSTGRES_PASSWORD=giamngheo
+      - POSTGRES_DB=db_giam_ngheo
+      - POSTGRES_USER=oc_admin
     restart: unless-stopped
     read_only: true
     cap_drop:

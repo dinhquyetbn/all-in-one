@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  db:
+    container_name: giamngheo-db
+    image: library/postgres:13.0
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    networks:
+      - default
+    volumes:
+      - ../db/giamngheo-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=db_giam_ngheo
+      - POSTGRES_USER=oc_admin
+      - POSTGRES_PASSWORD=giamngheo
