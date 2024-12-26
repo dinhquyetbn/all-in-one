@@ -1,3 +1,4 @@
+version: "3.3"
 services:
   nextcloud-aio-apache:
     depends_on:
@@ -59,38 +60,8 @@ services:
     cap_drop:
       - NET_RAW
 
-  # nextcloud-aio-database:
-  #   image: nextcloud/aio-postgresql:latest
-  #   user: "999"
-  #   init: true
-  #   healthcheck:
-  #     start_period: 0s
-  #     test: /healthcheck.sh
-  #     interval: 30s
-  #     timeout: 30s
-  #     start_interval: 5s
-  #     retries: 3
-  #   expose:
-  #     - "5432"
-  #   volumes:
-  #     - nextcloud_aio_database:/var/lib/postgresql/data:rw
-  #     - nextcloud_aio_database_dump:/mnt/data:rw
-  #   environment:
-  #     - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-  #     - POSTGRES_DB=nextcloud_database
-  #     - POSTGRES_USER=nextcloud
-  #     - TZ=${TIMEZONE}
-  #     - PGTZ=${TIMEZONE}
-  #   stop_grace_period: 1800s
-  #   restart: unless-stopped
-  #   shm_size: 268435456
-  #   read_only: true
-  #   tmpfs:
-  #     - /var/run/postgresql
-  #   cap_drop:
-  #     - NET_RAW
-
   nextcloud-aio-nextcloud:
+    depends_on:        
       nextcloud-aio-redis:
         condition: service_started
         
