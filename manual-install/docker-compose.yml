@@ -97,7 +97,7 @@ services:
     environment:
       - NEXTCLOUD_HOST=nextcloud-aio-nextcloud
       - POSTGRES_HOST=100.100.5.10
-      - POSTGRES_PORT=5432
+      - POSTGRES_PORT=1433
       - POSTGRES_PASSWORD=giamngheo
       - POSTGRES_DB=db_giam_ngheo
       - POSTGRES_USER=admin
@@ -172,7 +172,7 @@ services:
       - REDIS_HOST=nextcloud-aio-redis
       - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
       - POSTGRES_HOST=100.100.5.10
-      - POSTGRES_PORT=5432
+      - POSTGRES_PORT=1433
       - POSTGRES_PASSWORD=giamngheo
       - POSTGRES_DB=db_giam_ngheo
       - POSTGRES_USER=admin
