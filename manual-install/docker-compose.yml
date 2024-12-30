@@ -100,7 +100,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_PASSWORD=giamngheo
       - POSTGRES_DB=db_giam_ngheo
-      - POSTGRES_USER=oc_admin
+      - POSTGRES_USER=admin
       - REDIS_HOST=nextcloud-aio-redis
       - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
       - APACHE_HOST=nextcloud-aio-apache
@@ -175,7 +175,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_PASSWORD=giamngheo
       - POSTGRES_DB=db_giam_ngheo
-      - POSTGRES_USER=oc_admin
+      - POSTGRES_USER=admin
     restart: unless-stopped
     read_only: true
     cap_drop:
