@@ -3,22 +3,22 @@ services:
     depends_on:
       nextcloud-aio-onlyoffice:
         condition: service_started
-        
+        required: false
       nextcloud-aio-collabora:
         condition: service_started
-        
+        required: false
       nextcloud-aio-talk:
         condition: service_started
-        
+        required: false
       nextcloud-aio-nextcloud:
         condition: service_started
-        
+        required: false
       nextcloud-aio-notify-push:
         condition: service_started
-        
+        required: false
       nextcloud-aio-whiteboard:
         condition: service_started
-        
+        required: false
     image: nextcloud/aio-apache:latest
     user: "33"
     init: true
@@ -60,22 +60,25 @@ services:
       - NET_RAW
 
   nextcloud-aio-nextcloud:
-    depends_on:        
+    depends_on:
+      100.100.5.10:
+        condition: service_started
+        required: false
       nextcloud-aio-redis:
         condition: service_started
-        
+        required: false
       nextcloud-aio-clamav:
         condition: service_started
-        
+        required: false
       nextcloud-aio-fulltextsearch:
         condition: service_started
-        
+        required: false
       nextcloud-aio-talk-recording:
         condition: service_started
-        
+        required: false
       nextcloud-aio-imaginary:
         condition: service_started
-        
+        required: false
     image: nextcloud/aio-nextcloud:latest
     init: true
     healthcheck:
