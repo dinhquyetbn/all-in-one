@@ -61,9 +61,6 @@ services:
 
   nextcloud-aio-nextcloud:
     depends_on:
-      100.100.5.10:
-        condition: service_started
-        required: false
       nextcloud-aio-redis:
         condition: service_started
         required: false
