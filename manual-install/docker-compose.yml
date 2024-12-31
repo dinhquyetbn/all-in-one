@@ -3,22 +3,22 @@ services:
     depends_on:
       nextcloud-aio-onlyoffice:
         condition: service_started
-        required: false
+        
       nextcloud-aio-collabora:
         condition: service_started
-        required: false
+        
       nextcloud-aio-talk:
         condition: service_started
-        required: false
+        
       nextcloud-aio-nextcloud:
         condition: service_started
-        required: false
+        
       nextcloud-aio-notify-push:
         condition: service_started
-        required: false
+        
       nextcloud-aio-whiteboard:
         condition: service_started
-        required: false
+        
     image: nextcloud/aio-apache:latest
     user: "33"
     init: true
@@ -59,57 +59,23 @@ services:
     cap_drop:
       - NET_RAW
 
-  nextcloud-aio-database:
-    image: nextcloud/aio-postgresql:latest
-    user: "999"
-    init: true
-    healthcheck:
-      start_period: 0s
-      test: /healthcheck.sh
-      interval: 30s
-      timeout: 30s
-      start_interval: 5s
-      retries: 3
-    expose:
-      - "5432"
-    volumes:
-      - nextcloud_aio_database:/var/lib/postgresql/data:rw
-      - nextcloud_aio_database_dump:/mnt/data:rw
-    environment:
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_DB=nextcloud_database
-      - POSTGRES_USER=nextcloud
-      - TZ=${TIMEZONE}
-      - PGTZ=${TIMEZONE}
-    stop_grace_period: 1800s
-    restart: unless-stopped
-    shm_size: 268435456
-    read_only: true
-    tmpfs:
-      - /var/run/postgresql
-    cap_drop:
-      - NET_RAW
-
   nextcloud-aio-nextcloud:
-    depends_on:
-      nextcloud-aio-database:
-        condition: service_started
-        required: false
+    depends_on:        
       nextcloud-aio-redis:
         condition: service_started
-        required: false
+        
       nextcloud-aio-clamav:
         condition: service_started
-        required: false
+        
       nextcloud-aio-fulltextsearch:
         condition: service_started
-        required: false
+        
       nextcloud-aio-talk-recording:
         condition: service_started
-        required: false
+        
       nextcloud-aio-imaginary:
         condition: service_started
-        required: false
+        
     image: nextcloud/aio-nextcloud:latest
     init: true
     healthcheck:
@@ -129,11 +95,11 @@ services:
       - ${NEXTCLOUD_TRUSTED_CACERTS_DIR}:/usr/local/share/ca-certificates:ro
     environment:
       - NEXTCLOUD_HOST=nextcloud-aio-nextcloud
-      - POSTGRES_HOST=nextcloud-aio-database
-      - POSTGRES_PORT=5432
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_DB=nextcloud_database
-      - POSTGRES_USER=nextcloud
+      - POSTGRES_HOST=100.100.5.10
+      - POSTGRES_PORT=1433
+      - POSTGRES_PASSWORD=giamngheo
+      - POSTGRES_DB=db_giam_ngheo
+      - POSTGRES_USER=admin
       - REDIS_HOST=nextcloud-aio-redis
       - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
       - APACHE_HOST=nextcloud-aio-apache
@@ -204,11 +170,11 @@ services:
       - NEXTCLOUD_HOST=nextcloud-aio-nextcloud
       - REDIS_HOST=nextcloud-aio-redis
       - REDIS_HOST_PASSWORD=${REDIS_PASSWORD}
-      - POSTGRES_HOST=nextcloud-aio-database
-      - POSTGRES_PORT=5432
-      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
-      - POSTGRES_DB=nextcloud_database
-      - POSTGRES_USER=nextcloud
+      - POSTGRES_HOST=100.100.5.10
+      - POSTGRES_PORT=1433
+      - POSTGRES_PASSWORD=giamngheo
+      - POSTGRES_DB=db_giam_ngheo
+      - POSTGRES_USER=admin
     restart: unless-stopped
     read_only: true
     cap_drop:
